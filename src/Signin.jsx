@@ -50,15 +50,13 @@ function Signin(){
             />
             <br /><br />
             <Button variant="outlined" size='large'
-            onClick={async ()=>{
+            onClick={()=>{
 
-                let response = await axios.post('http://localhost:3000/admin/login',{
+                axios.post('http://localhost:3000/admin/login',{
                     username:username,
                     password:password
 
-                });
-                let data = response.data;
-                localStorage.setItem("token",data.token);
+                }).then((res)=>{localStorage.setItem('token',res.token)});
                 window.location = "/";
                 }}>Signin</Button>
             </div>
